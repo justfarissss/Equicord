@@ -5,40 +5,57 @@ function Command-Exists {
     return (Get-Command $cmd -ErrorAction SilentlyContinue) -ne $null
 }
 
-Write-Host "=== Checking Git ==="
-if (-not (Command-Exists git)) {
-    winget install --id Git.Git -e --source winget
+function Install-Git {
+    if (Command-Exists git) { return }
+    Write-Host "Installing Git (fallback)..."
+    $url = "https://github.com/git-for-windows/git/releases/latest/download/Git-64-bit.exe"
+    $out = "$env:TEMP\git.exe"
+    Invoke-WebRequest $url -OutFile $out
+    Start-Process $out -ArgumentList "/VERYSILENT /NORESTART" -Wait
 }
 
-Write-Host "=== Checking Node.js ==="
-if (-not (Command-Exists node)) {
-    winget install --id OpenJS.NodeJS.LTS -e --source winget
+function Install-Node {
+    if (Command-Exists node) { return }
+    Write-Host "Installing Node.js (fallback)..."
+    $url = "https://nodejs.org/dist/v18.20.4/node-v18.20.4-x64.msi"
+    $out = "$env:TEMP\node.msi"
+    Invoke-WebRequest $url -OutFile $out
+    Start-Process msiexec -ArgumentList "/i `"$out`" /quiet /norestart" -Wait
 }
 
-Write-Host "=== Checking Python ==="
-if (-not (Command-Exists python)) {
-    winget install --id Python.Python.3.11 -e --source winget
+function Install-Python {
+    if (Command-Exists python) { return }
+    Write-Host "Installing Python (fallback)..."
+    $url = "https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
+    $out = "$env:TEMP\python.exe"
+    Invoke-WebRequest $url -OutFile $out
+    Start-Process $out -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
 }
 
-Write-Host "=== Installing pnpm ==="
+# ===============================
+# INSTALL DEPENDENCIES
+# ===============================
+
+Install-Git
+Install-Node
+Install-Python
+
+# refresh PATH
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+
+# ===============================
+# BUILD & INJECT
+# ===============================
+
 npm install -g pnpm@10.4.1
 
-Write-Host "=== Closing Discord ==="
 Get-Process Discord -ErrorAction SilentlyContinue | Stop-Process -Force
 
-Write-Host "=== Updating Equicord ==="
 git pull
-
-Write-Host "=== Installing deps ==="
 pnpm install --frozen-lockfile
-
-Write-Host "=== Building Equicord ==="
 pnpm build
-
-Write-Host "=== Injecting Equicord ==="
 pnpm inject
 
-Write-Host "=== Injecting Stereo ==="
 python stereo_injector.py
 
 Write-Host "=== DONE ==="
