@@ -2,7 +2,6 @@ dist
 node_modules
 .VSCodeCounter
 
-*.exe
 vencord_installer
 equicord_installer
 
