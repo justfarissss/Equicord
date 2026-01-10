@@ -710,21 +710,21 @@
 .vc-command-palette-keybind-button {
     padding: 8px 16px;
     background-color: var(--background-base-low);
-    border: 2px solid var(--input-border);
+    border: 2px solid var(--input-border-default, var(--input-border));
     border-radius: 8px;
     cursor: pointer;
     min-width: 140px;
     text-align: center;
     font-family: var(--font-code);
     font-weight: 600;
-    color: var(--header-primary);
+    color: var(--text-strong);
     transition: all 0.2s ease;
     outline: none;
-    box-shadow: 0 0 0 1px var(--background-modifier-accent);
+    box-shadow: 0 0 0 1px var(--background-mod-muted);
 }
 
 .vc-command-palette-keybind-button:hover:not(:disabled) {
-    background-color: var(--background-modifier-hover);
+    background-color: var(--background-mod-subtle);
     border-color: var(--brand-experiment);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
