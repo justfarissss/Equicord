@@ -19,12 +19,8 @@ import { Timer } from "./Timer";
 export const settings = definePluginSettings({
     format: {
         type: OptionType.SELECT,
-<<<<<<< HEAD
         description: "The timer format. This can be any valid moment.js format",
         enabledByDefault: true,
-=======
-        description: "Compact or human readable format:",
->>>>>>> 4b1a06abff0f88925288fc9afc4235853b9da9a3
         options: [
             {
                 label: "30:23:00:42",
