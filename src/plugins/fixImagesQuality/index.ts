@@ -11,6 +11,7 @@ export default definePlugin({
     name: "FixImagesQuality",
     description: "Improves quality of images in chat by forcing png format",
     authors: [Devs.Nuckyz],
+    enabledByDefault: true,
     patches: [
         {
             find: ".handleImageLoad)",

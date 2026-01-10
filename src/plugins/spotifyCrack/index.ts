@@ -39,6 +39,7 @@ export default definePlugin({
     name: "SpotifyCrack",
     description: "Free listen along, no auto-pausing in voice chat, and allows activity to continue playing when idling",
     authors: [Devs.Cyn, Devs.Nuckyz],
+    enabledByDefault: true,
     settings,
 
     patches: [

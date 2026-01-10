@@ -87,6 +87,7 @@ export default definePlugin({
     description: "Show channels that you do not have access to view.",
     authors: [Devs.BigDuck, Devs.AverageReactEnjoyer, Devs.D3SOX, Devs.Ven, Devs.Nuckyz, Devs.Nickyux, Devs.dzshn, EquicordDevs.Oggetto],
     isModified: true,
+    enabledByDefault: true,
     settings,
 
     patches: [

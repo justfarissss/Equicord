@@ -14,6 +14,7 @@ const settings = definePluginSettings({
         description: "The volume % to set for spotify embeds. Anything above 10% is veeeery loud",
         markers: makeRange(0, 100, 10),
         stickToMarkers: false,
+        enabledByDefault: true,
         default: 10
     }
 });

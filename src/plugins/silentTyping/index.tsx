@@ -297,6 +297,7 @@ export default definePlugin({
     authors: [Devs.Ven, Devs.Rini, Devs.ImBanana, EquicordDevs.Etorix],
     description: "Hide your typing indicator from chat.",
     isModified: true,
+    enabledByDefault: true,
     settings,
 
     shouldHideChatBarTypingIndicators,

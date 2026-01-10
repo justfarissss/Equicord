@@ -131,7 +131,7 @@ export default definePlugin({
     name: "ReplaceGoogleSearch",
     description: "Replaces the Google search with different Engine(s)",
     authors: [Devs.Moxxie, Devs.Ethan],
-
+    enabledByDefault: true,
     settings,
 
     contextMenus: {

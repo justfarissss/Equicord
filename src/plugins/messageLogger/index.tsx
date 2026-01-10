@@ -406,6 +406,7 @@ export default definePlugin({
     authors: [Devs.rushii, Devs.Ven, Devs.AutumnVN, Devs.Nickyux, Devs.Kyuuhachi, EquicordDevs.justjxke],
     dependencies: ["MessageUpdaterAPI"],
     isModified: true,
+    enabledByDefault: true,
     settings,
 
     contextMenus: {

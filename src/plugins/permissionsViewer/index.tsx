@@ -51,6 +51,7 @@ export const settings = definePluginSettings({
     permissionsSortOrder: {
         description: "The sort method used for defining which role grants an user a certain permission",
         type: OptionType.SELECT,
+        enabledByDefault: true,
         options: [
             { label: "Highest Role", value: PermissionsSortOrder.HighestRole, default: true },
             { label: "Lowest Role", value: PermissionsSortOrder.LowestRole }

@@ -92,6 +92,7 @@ export default definePlugin({
     description: "Renders the avatars of users who reacted to a message",
     authors: [Devs.Ven, Devs.KannaDev, Devs.newwares],
     isModified: true,
+    enabledByDefault: true,
     settings,
     patches: [
         {

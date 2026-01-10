@@ -30,6 +30,7 @@ const settings = definePluginSettings({
     format: {
         type: OptionType.SELECT,
         description: "The timer format. This can be any valid moment.js format",
+        enabledByDefault: true,
         options: [
             {
                 label: "30d 23:00:42",
